@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 project(StudentManagerSystem LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Sql)
 
 qt_standard_project_setup()
 
@@ -13,12 +13,14 @@ qt_add_executable(StudentManagerSystem
     mainwindow.ui
     res.qrc
     style/style.qss
+    databasemanager.h databasemanager.cpp
 )
 
 target_link_libraries(StudentManagerSystem
     PRIVATE
         Qt::Core
         Qt::Widgets
+        Qt6::Sql
 )
 
 include(GNUInstallDirs)

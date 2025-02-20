@@ -1,0 +1,40 @@
+create table student(
+	id text primary key,
+	name text not null,
+	gender text,
+	birthday text,
+	join_date text,
+	student_goal,
+	progress text,
+	photo blog
+);
+
+create table schedule(
+	date text,
+	time text,
+	course_name text,
+	primary key(date,time)
+);
+
+create table financialRecords(
+	id integer primary key autoincrement,
+	student_id int not null,
+	payment_date date not null,
+	amount decimal(10,2) not null,
+	payment_type varchar(50) not null,
+	notes text,
+	foreign key(student_id) references studentInfo(id)
+);
+
+create table honorWall(
+	id integer primary key autoincrement,
+	image_data blog not null,
+	description text,
+	added_date datetime default current_timestamp
+);
+
+create table users(
+	id integer primary key autoincrement,
+	username text not null unique,
+	password text not null
+);

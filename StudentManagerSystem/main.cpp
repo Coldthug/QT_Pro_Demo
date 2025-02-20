@@ -1,9 +1,11 @@
 #include "mainwindow.h"
-
 #include <QApplication>
 #include <QFile>
+#include "databasemanager.h"
 int main(int argc, char *argv[])
 {
+
+    DataBaseManager ::instance();
     QApplication a(argc, argv);
     QFile styleFile("C:\\Users\\Administrator\\Desktop\\pro\\StudentManagerSystem\\style\\style.qss");
 
