@@ -1,3 +1,0 @@
-D:\Cmake\bin\cmake.exe -E rm -f CMakeFiles\StudentManagerSystem.dir/objects.a
-D:\QT\qt_6\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\StudentManagerSystem.dir/objects.a @CMakeFiles\StudentManagerSystem.dir\objects1.rsp
-D:\QT\qt_6\Tools\mingw1310_64\bin\g++.exe -DQT_QML_DEBUG -g -mwindows -Wl,--whole-archive CMakeFiles\StudentManagerSystem.dir/objects.a -Wl,--no-whole-archive -o StudentManagerSystem.exe -Wl,--out-implib,libStudentManagerSystem.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\StudentManagerSystem.dir\linkLibs.rsp

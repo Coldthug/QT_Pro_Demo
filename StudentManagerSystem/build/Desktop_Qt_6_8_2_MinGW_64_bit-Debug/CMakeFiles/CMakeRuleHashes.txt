@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-e792691ac7c819453736e1f9414d1060 CMakeFiles/StudentManagerSystem_autogen
-fac03bcb64bb57d3d1391d3f2cc62e32 StudentManagerSystem_autogen/timestamp
