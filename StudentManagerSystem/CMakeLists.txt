@@ -14,7 +14,12 @@ qt_add_executable(StudentManagerSystem
     res.qrc
     style/style.qss
     databasemanager.h databasemanager.cpp
+    studentinfowidget.h studentinfowidget.cpp studentinfowidget.ui
 )
+INCLUDE_DIRECTORIES(
+    ${PROJECT_SOURCE_DIR}
+)
+
 
 target_link_libraries(StudentManagerSystem
     PRIVATE

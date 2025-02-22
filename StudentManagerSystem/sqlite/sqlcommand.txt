@@ -1,4 +1,4 @@
-create table student(
+create table studentInfo(
 	id text primary key,
 	name text not null,
 	gender text,

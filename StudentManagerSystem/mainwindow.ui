@@ -135,23 +135,9 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="page_stuInfo">
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>260</y>
-          <width>53</width>
-          <height>15</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-       </widget>
-      </widget>
+      <widget class="StudentInfoWidget" name="page_stuInfo"/>
       <widget class="QWidget" name="page_finance">
        <widget class="QLabel" name="label_2">
         <property name="geometry">
@@ -228,6 +214,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>StudentInfoWidget</class>
+   <extends>QWidget</extends>
+   <header>studentinfowidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

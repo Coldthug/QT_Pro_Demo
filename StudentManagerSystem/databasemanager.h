@@ -4,8 +4,9 @@
 #include <QObject>
 #include <QSqlDatabase>
 #include <QSqlError>
-#include <qdebug.h>
-class DataBaseManager:public QObject
+#include <QDebug>
+
+class DataBaseManager : public QObject
 {
     Q_OBJECT
 public:
@@ -17,9 +18,9 @@ public:
     void setDataBase(const QString& path);
 
 private:
-    explicit DataBaseManager(QObject *parent =nullptr);
+    explicit DataBaseManager(QObject *parent = nullptr);
     QSqlDatabase db;
-    QString dbPath="D:/yin_private_area/yin/QT/StudentManagerSystem/sqlite";
+    QString dbPath = "D:/temp/QTDemo/StudentManagerSystem/sqlite/studentInfo.db";
 };
 
 #endif // DATABASEMANAGER_H
