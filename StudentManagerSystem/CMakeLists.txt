@@ -15,6 +15,7 @@ qt_add_executable(StudentManagerSystem
     style/style.qss
     databasemanager.h databasemanager.cpp
     studentinfowidget.h studentinfowidget.cpp studentinfowidget.ui
+    tabledelegates.h
 )
 INCLUDE_DIRECTORIES(
     ${PROJECT_SOURCE_DIR}

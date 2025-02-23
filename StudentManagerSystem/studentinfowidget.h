@@ -15,7 +15,7 @@
 #include <QStandardPaths>
 #include <QBuffer>
 #include <QMessageBox>
-
+#include <QTableWidgetItem>
 namespace Ui {
 class StudentInfoWidget;
 }
@@ -35,12 +35,14 @@ private slots:
 
     void on_btn_DeleteItem_clicked();
 
+    void handleItemChange(QTableWidgetItem* item);
 private:
     Ui::StudentInfoWidget *ui;
     void refreshTable();
     QGroupBox* createFormGroup();
     QGroupBox* createPhotoGroup();
     void handleDialogAccepted(QGroupBox* formGroup,QGroupBox* photoGroup);
+
     QByteArray photoData;
 };
 

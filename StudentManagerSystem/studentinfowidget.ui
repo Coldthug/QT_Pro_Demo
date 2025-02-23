@@ -29,11 +29,6 @@
      </column>
      <column>
       <property name="text">
-       <string>照片</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
        <string>性别</string>
       </property>
      </column>
@@ -55,6 +50,11 @@
      <column>
       <property name="text">
        <string>学习进度</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>照片</string>
       </property>
      </column>
     </widget>

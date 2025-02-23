@@ -1,5 +1,6 @@
 #include "studentinfowidget.h"
 #include "ui_studentinfowidget.h"
+#include "tabledelegates.h"
 #include <qlabel.h>
 #include <qsqlerror.h>
 
@@ -8,6 +9,22 @@ StudentInfoWidget::StudentInfoWidget(QWidget *parent)
     , ui(new Ui::StudentInfoWidget)
 {
     ui->setupUi(this);
+
+    ui->studentInfoTableWidget->verticalHeader()->setDefaultSectionSize(80);
+    ComboBoxDelegate* genderDelegate =new ComboBoxDelegate(this);
+    genderDelegate->setItems(QStringList()<<"男"<<"女");
+    ui->studentInfoTableWidget->setItemDelegateForColumn(2,genderDelegate);
+
+    ComboBoxDelegate* progressDelegate =new ComboBoxDelegate(this);
+    progressDelegate->setItems(QStringList()<<"0%"<<"20%"<<"40%"<<"60%"<<"80%"<<"100%");
+    ui->studentInfoTableWidget->setItemDelegateForColumn(6,progressDelegate);
+
+    ui->studentInfoTableWidget->setItemDelegateForColumn(3,new DateEditDelegate(this));
+    ui->studentInfoTableWidget->setItemDelegateForColumn(4,new DateEditDelegate(this));
+
+    ui->studentInfoTableWidget->setItemDelegateForColumn(7, new ImageDelegate(this));
+
+    connect(ui->studentInfoTableWidget,&QTableWidget::itemChanged,this,&StudentInfoWidget::handleItemChange);
     refreshTable();
 }
 
@@ -189,6 +206,42 @@ void StudentInfoWidget::handleDialogAccepted(QGroupBox* formGroup, QGroupBox* ph
     }
 }
 
+void StudentInfoWidget::handleItemChange(QTableWidgetItem *item)
+{
+    const int row=item->row();
+    const int col=item->column();
+
+    if(col==0){
+        QMessageBox::warning(this,"警告","学生编号是主键，不能修改");
+        refreshTable();
+        return;
+    }
+
+    const QString originalId=ui->studentInfoTableWidget->item(row,0)->text();
+    const QString columnName=QStringList{"id","name","gender","birthday","join_date","student_goal","progress","photo"}[col];
+
+    QSqlDatabase::database().transaction();
+    try{
+        QSqlQuery updateQuery;
+        updateQuery.prepare(QString("update studentInfo set %1 =? where id =?").arg(columnName));
+
+        if(columnName=="photo"){
+            updateQuery.addBindValue(item->data(Qt::UserRole).toByteArray());
+        }else{
+            updateQuery.addBindValue(item->text().trimmed());
+        }
+        updateQuery.addBindValue(originalId);
+
+        if(!updateQuery.exec()){
+            throw std::runtime_error("更新失败:"+ updateQuery.lastError().text().toStdString());
+        }
+        QSqlDatabase::database().commit();
+    }catch(const std::exception& e){
+        QSqlDatabase::database().rollback();
+        refreshTable();
+        QMessageBox::critical(this,"操作失败",QString::fromUtf8(e.what()));
+    }
+}
 void StudentInfoWidget::on_btn_add_clicked()
 {
     QDialog dlg(this);
