@@ -132,7 +132,7 @@ QGroupBox* StudentInfoWidget::createPhotoGroup()
     photoLayout->addWidget(lblPhotoPreview);
     photoLayout->addWidget(btnSelectPhoto, 0, Qt::AlignHCenter);
 
-    connect(btnSelectPhoto, &QPushButton::clicked, [this, lblPhotoPreview]() {
+    connect(btnSelectPhoto, &QPushButton::clicked, this,[this, lblPhotoPreview]() {
         QString fileName = QFileDialog::getOpenFileName(
             this, tr("选择学生照片"),
             QStandardPaths::writableLocation(QStandardPaths::PicturesLocation),

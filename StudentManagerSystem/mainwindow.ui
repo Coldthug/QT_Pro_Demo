@@ -135,39 +135,11 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="StudentInfoWidget" name="page_stuInfo"/>
-      <widget class="QWidget" name="page_finance">
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>310</x>
-          <y>200</y>
-          <width>53</width>
-          <height>15</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_honor">
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>420</x>
-          <y>290</y>
-          <width>53</width>
-          <height>15</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>3</string>
-        </property>
-       </widget>
-      </widget>
+      <widget class="ScheduleWidget" name="page_schedule"/>
+      <widget class="FinancialWidget" name="page_honor"/>
       <widget class="QWidget" name="page_system">
        <widget class="QLabel" name="label_4">
         <property name="geometry">
@@ -183,7 +155,7 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_schedule">
+      <widget class="QWidget" name="page_finance">
        <widget class="QLabel" name="label_5">
         <property name="geometry">
          <rect>
@@ -219,6 +191,18 @@
    <class>StudentInfoWidget</class>
    <extends>QWidget</extends>
    <header>studentinfowidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScheduleWidget</class>
+   <extends>QWidget</extends>
+   <header>schedulewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FinancialWidget</class>
+   <extends>QWidget</extends>
+   <header>financialwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
